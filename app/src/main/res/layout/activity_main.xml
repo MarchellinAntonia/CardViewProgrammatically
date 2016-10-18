@@ -13,32 +13,9 @@
     android:id="@+id/rl">
 
     <TextView
-        android:id="@+id/labelTanggal"
-        android:text="Tanggal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_margin="10dp" />
-
-    <TextView
-        android:id="@+id/textTgl"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Current/Selected Date (M-D-YYYY): "
-        android:layout_margin="10dp" />
-
-    <Button
-        android:id="@+id/changeDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Pilih Tanggal"
-        android:layout_margin="10dp" />
-
-    <TextView
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:text="Process"
+        android:text="SHOW Card"
         android:gravity="center"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"

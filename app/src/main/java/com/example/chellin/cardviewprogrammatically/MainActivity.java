@@ -26,16 +26,9 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private Context mContext;
-    private AlertDialogHelper alertDialog;
-    private int year, month, day;
 
-    private Button changeDate;
-    private TextView tgl;
     LinearLayout mLinearLayout;
     private TextView process;
-    private Dialog historyDialog;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         setTitle("Riwayat Komplain");
         mContext = getApplicationContext();
-//        ok.setVisibility(View.INVISIBLE);
 
         Complain complain;
         final ArrayList<Complain> complains = new ArrayList<>();
@@ -61,36 +53,7 @@ public class MainActivity extends AppCompatActivity {
         complain = new Complain("pesan5", "status5", "answer5", "tanggal5");
         complains.add(complain);
 
-
-        alertDialog = new AlertDialogHelper(MainActivity.this);
         mLinearLayout = (LinearLayout) findViewById(R.id.rl);
-        tgl = (TextView) findViewById(R.id.textTgl);
-        changeDate = (Button) findViewById(R.id.changeDate);
-
-        // Get current date by calender
-        final Calendar c = Calendar.getInstance();
-        year  = c.get(Calendar.YEAR);
-        month = c.get(Calendar.MONTH);
-        day   = c.get(Calendar.DAY_OF_MONTH);
-        tgl.setText(new StringBuilder()
-                // Month is 0 based, just add 1
-                .append(year).append("-").append(month+1).append("-").append(day));
-
-        final DatePickerDialog datePicker = new DatePickerDialog(MainActivity.this, new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                tgl.setText(new StringBuilder()
-                        .append(String.valueOf(year)).append("-").append(String.valueOf(monthOfYear+1)).append("-").append(String.valueOf(dayOfMonth)));
-            }
-        }, year, month, day);
-
-        changeDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                datePicker.show();
-            }
-        });
-
 
         process =  (TextView)findViewById(R.id.process_history_complain);
         process.setOnClickListener(new View.OnClickListener() {
@@ -100,16 +63,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
     }
 
 
     private void showHistory(List<Complain> complain) {
 
-        TextView label = (TextView) findViewById(R.id.labelTanggal);
-        ((ViewGroup) label.getParent()).removeView(label);
-        ((ViewGroup) tgl.getParent()).removeView(tgl);
-        ((ViewGroup) changeDate.getParent()).removeView(changeDate);
         ((ViewGroup) process.getParent()).removeView(process);
 
         for(int i=0;i<complain.size();i++){
