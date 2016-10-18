@@ -92,9 +92,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
         process =  (TextView)findViewById(R.id.process_history_complain);
-
         process.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -114,9 +112,6 @@ public class MainActivity extends AppCompatActivity {
         ((ViewGroup) changeDate.getParent()).removeView(changeDate);
         ((ViewGroup) process.getParent()).removeView(process);
 
-
-
-
         for(int i=0;i<complain.size();i++){
 
             // Initialize a new CardView
@@ -126,42 +121,51 @@ public class MainActivity extends AppCompatActivity {
 
             // Set the CardView layoutParams
             ActionBar.LayoutParams params = new ActionBar.LayoutParams(
-                    ActionBar.LayoutParams.WRAP_CONTENT,
+                    ActionBar.LayoutParams.MATCH_PARENT,
                     ActionBar.LayoutParams.WRAP_CONTENT
             );
+
+            params.setMargins(20, 20, 20, 20);
             card.setLayoutParams(params);
             card.setRadius(9);
-            card.setContentPadding(15, 15, 15, 15);
+            card.setContentPadding(30, 30, 30, 30);
             card.setCardBackgroundColor(Color.parseColor("#FFC6D6C3"));
-            card.setMaxCardElevation(15);
-            card.setCardElevation(9);
+            card.setMaxCardElevation(6);
+            card.setCardElevation(3);
+
+            LinearLayout.LayoutParams paramstext = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.WRAP_CONTENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT
+            );
+
+            paramstext.setMargins(0, 5, 0,  5);
 
             TextView tv = new TextView(this);
-            tv.setLayoutParams(params);
+            tv.setLayoutParams(paramstext);
             tv.setText(complain.get(i).getLocalTs());
-            tv.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 30);
+            tv.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
             tv.setTextColor(Color.RED);
 
             lin.addView(tv);
 
             TextView tv2 = new TextView(this);
-            tv2.setLayoutParams(params);
+            tv2.setLayoutParams(paramstext);
             tv2.setText(complain.get(i).getInMsg());
-            tv2.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 30);
+            tv2.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
             tv2.setTextColor(Color.BLACK);
             lin.addView(tv2);
 
             TextView tv3 = new TextView(this);
-            tv3.setLayoutParams(params);
+            tv3.setLayoutParams(paramstext);
             tv3.setText(complain.get(i).getOutMsg().toString());
-            tv3.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 30);
+            tv3.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
             tv3.setTextColor(Color.BLUE);
             lin.addView(tv3);
 
             TextView tv4 = new TextView(this);
-            tv4.setLayoutParams(params);
+            tv4.setLayoutParams(paramstext);
             tv4.setText(complain.get(i).getStatus());
-            tv4.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 30);
+            tv4.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
             tv4.setTextColor(Color.BLUE);
             lin.addView(tv4);
 
